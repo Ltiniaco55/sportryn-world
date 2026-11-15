@@ -1,0 +1,12 @@
+node_modules/
+.nuxt/
+.output/
+coverage/
+dist/
+.env
+api/storage/media/*
+!api/storage/media/.gitkeep
+web/android/
+web/ios/
+*.tar.gz
+.DS_Store
