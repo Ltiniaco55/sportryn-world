@@ -1,0 +1,62 @@
+# Sportryn World — entorno local completo.
+#   docker compose up        → arranca todo
+#   docker compose down      → lo para (los datos se conservan)
+#   docker compose down -v   → lo para y BORRA la base de datos
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: sportryn
+      POSTGRES_PASSWORD: sportryn
+      POSTGRES_DB: sportryn
+    ports: ["5433:5432"]            # 5433 para no chocar con otros Postgres/XAMPP
+    volumes:
+      - db-data:/var/lib/postgresql/data
+      - ./docker/initdb:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sportryn -d sportryn"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+
+  api:
+    image: node:22-bookworm-slim
+    working_dir: /app
+    volumes:
+      - ./api:/app
+      - api-modules:/app/node_modules   # dependencias dentro de Docker (binarios de Linux)
+    environment:
+      DATABASE_URL: postgres://sportryn:sportryn@db:5432/sportryn
+      TEST_DATABASE_URL: postgres://sportryn:sportryn@db:5432/sportryn_test
+      APP_URL: http://localhost:3000
+      API_URL: http://localhost:8000
+      CORS_ORIGINS: "*"
+      PAYMENTS_DRIVER: fake
+    # Instala dependencias, crea tablas + datos demo (solo la primera vez) y arranca con recarga automática.
+    command: sh -c "npm install --no-audit --no-fund && npm run seed && npm run dev"
+    ports: ["8000:8000"]
+    depends_on:
+      db: { condition: service_healthy }
+
+  web:
+    image: node:22-bookworm-slim
+    working_dir: /app
+    volumes:
+      - ./web:/app
+      - web-modules:/app/node_modules
+    environment:
+      NUXT_PUBLIC_API_BASE: http://localhost:8000
+      NUXT_POLLING: "1"               # detecta cambios de archivos desde Windows
+    command: sh -c "npm install --no-audit --no-fund && npm run dev"
+    ports: ["3000:3000"]
+    depends_on: [api]
+
+  landing:
+    image: nginx:alpine
+    volumes: ["./landing:/usr/share/nginx/html:ro"]
+    ports: ["8080:80"]
+
+volumes:
+  db-data:
+  api-modules:
+  web-modules:

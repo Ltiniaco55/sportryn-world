@@ -2,7 +2,7 @@ node_modules/
 .nuxt/
 .output/
 coverage/
-dist/
+dist
 .env
 api/storage/media/*
 !api/storage/media/.gitkeep
@@ -10,3 +10,4 @@ web/android/
 web/ios/
 *.tar.gz
 .DS_Store
+_to_delete/

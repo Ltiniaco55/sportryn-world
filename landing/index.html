@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sportryn — Tu liga de fútbol amateur, en un solo sitio</title>
+<meta name="description" content="Sportryn es la app para organizar ligas y torneos de fútbol amateur: inscripciones, calendario, actas, clasificación, mapa de partidos y stickers para compartir. Empezamos en Madrid.">
+<meta name="theme-color" content="#0A0E0D">
+<meta property="og:title" content="Sportryn — Tu liga de fútbol amateur, en un solo sitio">
+<meta property="og:description" content="Gestión, descubrimiento y stickers para ligas y torneos de fútbol amateur. Empezamos en Madrid.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#0A0E0D; --surface:#121816; --surface-2:#1A2220; --line:#26322E; --text:#F4F7F2; --muted:#9AA59F; --lime:#C6F432; --ink:#0A0E0D; --danger:#FF6B5E;
+    --display:'Space Grotesk',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif; }
+  *,*::before,*::after { box-sizing:border-box; }
+  html { scroll-behavior:smooth; background:var(--bg); color-scheme:dark; }
+  body { margin:0; font-family:var(--body); color:var(--text); background:var(--bg); line-height:1.55; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3 { font-family:var(--display); line-height:1.05; letter-spacing:-.025em; margin:0; text-wrap:balance; }
+  h1 { font-size:clamp(2.6rem,8vw,5.2rem); } h2 { font-size:clamp(1.8rem,4.5vw,2.8rem); } h3 { font-size:1.2rem; }
+  p { margin:0; } a { color:inherit; }
+  .wrap { width:min(1080px,100% - 40px); margin-inline:auto; }
+  .lime { color:var(--lime); } .muted { color:var(--muted); }
+  .eyebrow { font-size:.75rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--muted); }
+  .btn { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding:0 28px; border-radius:999px; background:var(--lime); color:var(--ink); font-weight:700; text-decoration:none; border:0; cursor:pointer; font:inherit; font-weight:700; }
+  .btn:hover { filter:brightness(1.08); } .btn:disabled { opacity:.5; cursor:not-allowed; }
+  .btn.ghost { background:transparent; color:var(--text); border:1px solid var(--line); }
+  :focus-visible { outline:2px solid var(--lime); outline-offset:3px; }
+
+  header.top { position:sticky; top:0; z-index:10; background:rgba(10,14,13,.85); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
+  header.top .wrap { display:flex; align-items:center; justify-content:space-between; height:64px; }
+  .brand { display:flex; align-items:center; gap:10px; font-family:var(--display); font-weight:700; letter-spacing:.1em; text-transform:uppercase; text-decoration:none; }
+  .brand i { width:16px; height:16px; background:var(--lime); border-radius:5px; transform:rotate(45deg); }
+  .pill { font-size:.72rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--lime); border:1px solid rgba(198,244,50,.4); padding:4px 12px; border-radius:999px; }
+
+  .hero { padding:clamp(56px,10vw,120px) 0 clamp(48px,8vw,96px); position:relative; overflow:hidden; }
+  .hero::before { content:''; position:absolute; inset:auto -20% -60% -20%; height:120%; background:radial-gradient(closest-side,rgba(198,244,50,.13),transparent); pointer-events:none; }
+  .hero .wrap { position:relative; display:grid; gap:48px; align-items:center; }
+  .hero p.lead { font-size:clamp(1.05rem,2.2vw,1.3rem); color:var(--muted); max-width:34em; margin-top:20px; }
+  .cta { display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+  .cities { margin-top:28px; font-size:.9rem; color:var(--muted); }
+  .cities b { color:var(--text); font-weight:500; }
+
+  /* Maqueta de sticker (CSS puro) */
+  .phone { width:min(280px,72vw); aspect-ratio:9/16; margin-inline:auto; border-radius:36px; background:var(--surface); border:1px solid var(--line); padding:14px; box-shadow:0 40px 100px rgba(0,0,0,.6); transform:rotate(3deg); }
+  .sticker { height:100%; border-radius:24px; border:2px solid #17201D; display:grid; align-content:center; justify-items:center; gap:14px; text-align:center; padding:20px; background:
+    radial-gradient(circle at 50% 50%,transparent 58px,#17201D 59px,#17201D 61px,transparent 62px), linear-gradient(#17201D,#17201D) center/100% 2px no-repeat, var(--bg); }
+  .sticker small { font-size:.6rem; letter-spacing:.2em; font-weight:700; color:var(--muted); }
+  .sticker .t { font-family:var(--display); font-weight:700; font-size:1.15rem; }
+  .sticker .s { font-family:var(--display); font-weight:700; font-size:3.4rem; line-height:1; background:var(--lime); color:var(--ink); border-radius:18px; padding:14px 26px; }
+  .sticker .b { margin-top:18px; font-family:var(--display); font-weight:700; font-size:.7rem; letter-spacing:.18em; }
+
+  section { padding:clamp(48px,8vw,96px) 0; border-top:1px solid var(--line); }
+  .head { display:grid; gap:14px; max-width:40em; margin-bottom:40px; }
+  .grid { display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:28px; display:grid; gap:12px; align-content:start; }
+  .card .n { font-family:var(--display); font-weight:700; color:var(--lime); font-size:.85rem; letter-spacing:.12em; }
+  .card p { color:var(--muted); }
+  .steps { counter-reset:s; display:grid; gap:0; }
+  .steps li { list-style:none; counter-increment:s; display:grid; grid-template-columns:56px 1fr; gap:8px 16px; padding:24px 0; border-top:1px solid var(--line); }
+  .steps li::before { content:counter(s,decimal-leading-zero); font-family:var(--display); font-weight:700; font-size:1.6rem; color:var(--lime); grid-row:span 2; }
+  .steps li p { color:var(--muted); grid-column:2; }
+  .steps { padding:0; margin:0; }
+  .price { background:var(--lime); color:var(--ink); border-radius:24px; padding:clamp(28px,5vw,48px); display:grid; gap:12px; }
+  .price h2 { color:var(--ink); } .price p { font-weight:500; max-width:38em; }
+
+  form { display:grid; gap:14px; }
+  .fields { display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
+  label { display:grid; gap:6px; font-size:.85rem; color:var(--muted); font-weight:500; }
+  input { min-height:50px; padding:0 16px; border-radius:12px; border:1px solid var(--line); background:var(--surface-2); color:var(--text); font:inherit; }
+  input:focus { outline:none; border-color:var(--lime); }
+  .msg { padding:14px 18px; border-radius:12px; font-weight:500; }
+  .msg.ok { background:rgba(198,244,50,.12); color:var(--lime); border:1px solid rgba(198,244,50,.4); }
+  .msg.err { background:rgba(255,107,94,.1); color:#FFB4AC; border:1px solid rgba(255,107,94,.35); }
+  footer { border-top:1px solid var(--line); padding:32px 0 48px; color:var(--muted); font-size:.85rem; }
+  footer .wrap { display:flex; flex-wrap:wrap; gap:12px; justify-content:space-between; }
+  @media (min-width:860px) { .hero .wrap { grid-template-columns:1.25fr .75fr; } }
+  @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#"><i></i> Sportryn</a>
+    <span class="pill">En construcción</span>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Ligas y torneos de fútbol amateur</p>
+        <h1>Tu liga, en <span class="lime">un solo sitio</span>.</h1>
+        <p class="lead">Sportryn junta lo que hoy tienes repartido entre grupos de WhatsApp, hojas de cálculo e Instagram: inscripciones, calendario, actas, clasificación, fotos y un mapa para que te encuentren nuevos equipos.</p>
+        <div class="cta">
+          <a class="btn" href="#lista">Quiero ser liga fundadora</a>
+          <a class="btn ghost" href="#como">Cómo funciona</a>
+        </div>
+        <p class="cities">Empezamos en <b>Madrid</b>. Después: Barcelona, Atlanta y Orlando.</p>
+      </div>
+      <div class="phone" aria-hidden="true">
+        <div class="sticker">
+          <small>RESULTADO FINAL</small>
+          <span class="t">Leones de Lavapiés</span>
+          <span class="s">3–1</span>
+          <span class="t">Chamberí United</span>
+          <span class="b">◆ SPORTRYN MADRID</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="head"><p class="eyebrow">Qué va a ser</p><h2>Gestión, descubrimiento y orgullo de equipo.</h2></div>
+      <div class="grid">
+        <article class="card"><span class="n">01 · GESTIÓN</span><h3>Todo lo que mueve tu competición</h3><p>Equipos y plantillas, calendario, sedes, árbitros, actas y una clasificación que se calcula sola cuando el árbitro cierra el partido.</p></article>
+        <article class="card"><span class="n">02 · DESCUBRIMIENTO</span><h3>Un mapa de dónde se juega</h3><p>Tus partidos aparecen en el mapa de la ciudad con los campos donde se disputan. Cada evento tiene su perfil público con fotos de las jornadas.</p></article>
+        <article class="card"><span class="n">03 · STICKERS</span><h3>Resultados que se comparten solos</h3><p>Cada resultado y cada gol generan un sticker listo para historias de Instagram y TikTok. Tus jugadores hacen la publicidad de tu liga.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="como">
+    <div class="wrap">
+      <div class="head"><p class="eyebrow">Para organizadores</p><h2>De la inscripción al pitido final.</h2></div>
+      <ol class="steps">
+        <li><h3>Crea tu liga o torneo y abre la inscripción</h3><p>Compartes un enlace y los capitanes inscriben a sus equipos con su plantilla. Crear el evento es gratis.</p></li>
+        <li><h3>Cierra la inscripción</h3><p>Cuando estén todos, cierras y ves el importe exacto: una tarifa por cada equipo inscrito.</p></li>
+        <li><h3>Activa el evento</h3><p>Con el pago se desbloquea todo: calendario, árbitros, actas, fotos, stickers y presencia en el mapa.</p></li>
+        <li><h3>Juega</h3><p>Asignas un árbitro a cada partido. Solo él puede apuntar goles y tarjetas de ese partido, y al cerrar el acta la clasificación se actualiza al momento.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="price">
+        <p class="eyebrow" style="color:var(--ink)">Precio</p>
+        <h2>Solo pagas por equipo inscrito.</h2>
+        <p>Sin cuotas mensuales ni permanencia. Si no se inscribe ningún equipo, no pagas nada.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="head"><p class="eyebrow">Para todos</p><h2>Cada uno ve lo suyo.</h2></div>
+      <div class="grid">
+        <article class="card"><h3>Organizador</h3><p>Controla el evento completo: inscripciones, calendario, sedes, árbitros y publicaciones.</p></article>
+        <article class="card"><h3>Árbitro</h3><p>Rellena el acta desde el móvil a pie de campo. Solo tiene acceso a los partidos que le asignan.</p></article>
+        <article class="card"><h3>Capitán y jugadores</h3><p>Inscriben al equipo, siguen la clasificación y comparten sus resultados y goles.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="lista">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Ligas fundadoras</p>
+        <h2>Entra antes del lanzamiento.</h2>
+        <p class="muted">Estamos construyendo Sportryn con las primeras ligas de Madrid. Déjanos tus datos y te escribimos cuando abramos plazas.</p>
+      </div>
+      <!-- El formulario envía a la API de Sportryn. Cambia data-endpoint por la URL de producción antes de publicar. -->
+      <form id="waitlist" data-endpoint="http://localhost:8000/api/waitlist" novalidate>
+        <div class="fields">
+          <label>Tu nombre<input name="name" required minlength="2" maxlength="120" autocomplete="name"></label>
+          <label>Email<input name="email" type="email" required maxlength="190" autocomplete="email"></label>
+          <label>Nombre de tu liga o torneo<input name="league_name" maxlength="120"></label>
+          <label>Ciudad<input name="city" maxlength="80" value="Madrid"></label>
+          <label>¿Cuántos equipos tiene?<input name="teams_count" type="number" min="0" max="10000" inputmode="numeric"></label>
+        </div>
+        <div><button class="btn" type="submit">Apuntarme a la lista</button></div>
+        <p class="muted" style="font-size:.8rem">Usaremos tus datos solo para avisarte del lanzamiento de Sportryn.</p>
+        <div id="msg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© <span id="year"></span> Sportryn World</span><span>Sportryn Madrid · Barcelona · Atlanta · Orlando</span></div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const form = document.getElementById('waitlist');
+  const msg = document.getElementById('msg');
+  const say = (text, ok) => { msg.className = 'msg ' + (ok ? 'ok' : 'err'); msg.textContent = text; };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    const data = Object.fromEntries(new FormData(form));
+    const body = {
+      name: data.name.trim(), email: data.email.trim(),
+      league_name: data.league_name.trim() || null, city: data.city.trim() || null,
+      teams_count: data.teams_count === '' ? null : Number(data.teams_count),
+    };
+    const button = form.querySelector('button');
+    button.disabled = true;
+    try {
+      const res = await fetch(form.dataset.endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+      if (res.ok) { form.reset(); say('¡Apuntado! Te escribiremos cuando abramos plazas.', true); }
+      else if (res.status === 429) say('Demasiados intentos. Prueba de nuevo en un minuto.', false);
+      else {
+        const json = await res.json().catch(() => ({}));
+        say(Object.values(json.errors || {})[0]?.[0] || 'Revisa los datos e inténtalo otra vez.', false);
+      }
+    } catch { say('No hemos podido enviar el formulario. Inténtalo de nuevo en unos minutos.', false); }
+    finally { button.disabled = false; }
+  });
+</script>
+</body>
+</html>
