@@ -28,7 +28,7 @@ services:
     environment:
       DATABASE_URL: postgres://sportryn:sportryn@db:5432/sportryn
       TEST_DATABASE_URL: postgres://sportryn:sportryn@db:5432/sportryn_test
-      APP_URL: http://localhost:3000
+      APP_URL: http://localhost:3005
       API_URL: http://localhost:8000
       CORS_ORIGINS: "*"
       PAYMENTS_DRIVER: fake
@@ -48,7 +48,7 @@ services:
       NUXT_PUBLIC_API_BASE: http://localhost:8000
       NUXT_POLLING: "1"               # detecta cambios de archivos desde Windows
     command: sh -c "npm install --no-audit --no-fund && npm run dev"
-    ports: ["3000:3000"]
+    ports: ["3005:3000"]            # 3005 en tu PC (el 3000 ya lo usa otro programa)
     depends_on: [api]
 
   landing:

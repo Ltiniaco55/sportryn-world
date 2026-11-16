@@ -234,7 +234,7 @@ const delPost = (p: any) => act(() => api(`/posts/${p.id}`, { method: 'DELETE' }
         <article v-for="p in posts" :key="p.id" class="card stack">
           <div class="row between"><p class="small muted">{{ fmtLong(p.created_at) }}</p><button class="btn sm danger" :disabled="busy" @click="delPost(p)">Borrar</button></div>
           <p v-if="p.body">{{ p.body }}</p>
-          <div v-if="p.media.length" class="row wrap"><img v-for="m in p.media" :key="m.id" :src="m.url" alt="" style="width: 96px; height: 96px; object-fit: cover; border-radius: 10px"></div>
+          <div v-if="p.media.length" class="row wrap"><img v-for="m in p.media" :key="m.id" :src="localToHost(m.url)" alt="" style="width: 96px; height: 96px; object-fit: cover; border-radius: 10px"></div>
         </article>
       </template>
     </template>

@@ -11,3 +11,7 @@ web/ios/
 *.tar.gz
 .DS_Store
 _to_delete/
+
+# Accesos directos de skills (se recrean con npx skills add)
+.claude/skills/
+.agents/

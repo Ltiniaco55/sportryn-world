@@ -26,7 +26,7 @@ La primera vez tarda unos minutos (descarga imágenes e instala dependencias). C
 
 | Qué | Dirección |
 |---|---|
-| App | http://localhost:3000 |
+| App | http://localhost:3005 |
 | API | http://localhost:8000/api/events |
 | Landing | http://localhost:8080 |
 | PostgreSQL | `localhost:5433` · usuario `sportryn` · contraseña `sportryn` · base `sportryn` |

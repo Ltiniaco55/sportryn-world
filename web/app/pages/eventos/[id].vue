@@ -164,7 +164,7 @@ async function shareEvent() {
         <p class="small muted">{{ fmtLong(p.created_at) }}</p>
         <p v-if="p.body">{{ p.body }}</p>
         <div v-if="p.media.length" class="photos">
-          <img v-for="m in p.media" :key="m.id" :src="m.url" :width="m.width" :height="m.height" alt="Foto del evento" loading="lazy">
+          <img v-for="m in p.media" :key="m.id" :src="localToHost(m.url)" :width="m.width" :height="m.height" alt="Foto del evento" loading="lazy">
         </div>
       </article>
       <div v-if="!posts.length" class="empty">El organizador aún no ha publicado fotos.</div>
