@@ -60,7 +60,7 @@ Factories para tests: `api/tests/helpers.ts` (`f.user()`, `f.event(org, 'active'
 ## Skills por carpeta
 
 - **App (`web/`)**: Impeccable (`/impeccable`, con `PRODUCT.md` y `DESIGN.md`), más `break-ui`, `mobile-native`, `gestures` y las de animación: `animate`, `animation-performance`, `animation-vocabulary`, `choreograph`, `find-animation-opportunities`, `improve-animations`, `remove-animations` y `review-animations`.
-- **Landing (`landing/`)**: `design-taste-frontend`.
+- **Landing (`landing/`)**: `design-taste-frontend`, comp-first: primero una imagen de referencia aprobada y después el código, que debe igualarla.
 
 ## No tocar
 
