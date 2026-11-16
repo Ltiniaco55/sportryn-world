@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-16T00:00:00Z",
+  "title": "Design System: Sportryn World",
+  "extensions": {
+    "colorMeta": {
+      "floodlight-lime": { "role": "primary", "displayName": "Floodlight Lime", "canonical": "#C6F432", "tonalRamp": ["#2A3608", "#45590C", "#647F12", "#84A619", "#A6CE22", "#C6F432", "#DAF87A", "#EEFCC4"] },
+      "night-pitch": { "role": "neutral", "displayName": "Night Pitch", "canonical": "#0A0E0D", "tonalRamp": ["#0A0E0D", "#121816", "#1A2220", "#26322E", "#3E4C47", "#66736E", "#9AA59F", "#D3DAD6"] },
+      "stand-shadow": { "role": "neutral", "displayName": "Stand Shadow", "canonical": "#121816", "tonalRamp": ["#0A0E0D", "#121816", "#1A2220", "#26322E", "#3E4C47", "#66736E", "#9AA59F", "#D3DAD6"] },
+      "dugout": { "role": "neutral", "displayName": "Dugout", "canonical": "#1A2220", "tonalRamp": ["#0A0E0D", "#121816", "#1A2220", "#26322E", "#3E4C47", "#66736E", "#9AA59F", "#D3DAD6"] },
+      "chalk-line": { "role": "neutral", "displayName": "Chalk Line", "canonical": "#26322E", "tonalRamp": ["#0A0E0D", "#121816", "#1A2220", "#26322E", "#3E4C47", "#66736E", "#9AA59F", "#D3DAD6"] },
+      "scoreboard-white": { "role": "neutral", "displayName": "Scoreboard White", "canonical": "#F4F7F2", "tonalRamp": ["#262A25", "#40453F", "#5E645D", "#7F857E", "#A3A9A2", "#C8CDC6", "#E2E6DF", "#F4F7F2"] },
+      "touchline-grey": { "role": "neutral", "displayName": "Touchline Grey", "canonical": "#9AA59F", "tonalRamp": ["#1E2321", "#333B38", "#4C5652", "#66726D", "#808C87", "#9AA59F", "#BEC6C2", "#E1E6E3"] },
+      "red-card": { "role": "semantic", "displayName": "Red Card", "canonical": "#FF6B5E", "tonalRamp": ["#3D0F0B", "#661A13", "#94281D", "#C4392B", "#EB5245", "#FF6B5E", "#FFB4AC", "#FFE1DD"] },
+      "yellow-card": { "role": "semantic", "displayName": "Yellow Card", "canonical": "#FFC857", "tonalRamp": ["#3A2A05", "#5E450A", "#86630F", "#AE8216", "#D9A322", "#FFC857", "#FFDC94", "#FFF1D3"] },
+      "replay-blue": { "role": "semantic", "displayName": "Replay Blue", "canonical": "#7FB4FF", "tonalRamp": ["#0E2140", "#163566", "#204D94", "#2D68C2", "#4D8AE6", "#7FB4FF", "#B3D2FF", "#E0EDFF"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Título de página (h1)." },
+      "headline": { "displayName": "Headline", "purpose": "Títulos de sección (h2)." },
+      "title": { "displayName": "Title", "purpose": "Título de tarjeta, evento o sticker (h3)." },
+      "body": { "displayName": "Body", "purpose": "Todo el texto corrido; secundario a 0.85rem en Touchline Grey." },
+      "label": { "displayName": "Label", "purpose": "Metadatos en mayúsculas encima del título de una tarjeta; base de cabeceras de tabla y badges." },
+      "score": { "displayName": "Score", "purpose": "Marcadores y puntos con cifras tabulares." }
+    },
+    "shadows": [
+      { "name": "float", "value": "0 12px 40px rgba(0, 0, 0, .45)", "purpose": "Solo el toast, que flota sobre todo." }
+    ],
+    "motion": [
+      { "name": "state-fast", "value": "150ms ease", "purpose": "Hover de botones (brillo) y de tarjetas enlace (borde lima y 1px arriba). Se desactiva con prefers-reduced-motion." }
+    ],
+    "breakpoints": [
+      { "name": "desktop", "value": "900px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Acción principal de la pantalla; una por pantalla.",
+      "html": "<button class=\"ds-btn-primary\">Cerrar acta</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 24px; border-radius: 999px; border: 1px solid transparent; background: var(--lime, #C6F432); color: var(--lime-ink, #0A0E0D); font-family: var(--font-body, Inter, system-ui, sans-serif); font-weight: 700; cursor: pointer; transition: filter .15s; } .ds-btn-primary:hover { filter: brightness(1.08); } .ds-btn-primary:focus-visible { outline: 2px solid var(--lime, #C6F432); outline-offset: 2px; } .ds-btn-primary:disabled { opacity: .45; cursor: not-allowed; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Acción secundaria junto a la principal.",
+      "html": "<button class=\"ds-btn-ghost\">Descargar</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: 0 24px; border-radius: 999px; border: 1px solid var(--line, #26322E); background: transparent; color: var(--text, #F4F7F2); font-family: var(--font-body, Inter, system-ui, sans-serif); font-weight: 700; cursor: pointer; transition: border-color .15s; } .ds-btn-ghost:hover { border-color: var(--muted, #9AA59F); } .ds-btn-ghost:focus-visible { outline: 2px solid var(--lime, #C6F432); outline-offset: 2px; }"
+    },
+    {
+      "name": "Danger Button",
+      "kind": "button",
+      "refersTo": "button-danger",
+      "description": "Acción destructiva (borrar, cancelar).",
+      "html": "<button class=\"ds-btn-danger\">Borrar</button>",
+      "css": ".ds-btn-danger { display: inline-flex; align-items: center; justify-content: center; min-height: 36px; padding: 0 16px; font-size: .85rem; border-radius: 999px; border: 1px solid rgba(255, 107, 94, .4); background: transparent; color: var(--danger, #FF6B5E); font-family: var(--font-body, Inter, system-ui, sans-serif); font-weight: 700; cursor: pointer; } .ds-btn-danger:hover { border-color: var(--danger, #FF6B5E); } .ds-btn-danger:focus-visible { outline: 2px solid var(--lime, #C6F432); outline-offset: 2px; }"
+    },
+    {
+      "name": "Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo de formulario con etiqueta encima.",
+      "html": "<label class=\"ds-field\"><span>Nombre del equipo</span><input class=\"ds-input\" placeholder=\"Leones de Lavapiés\"></label>",
+      "css": ".ds-field { display: grid; gap: 6px; font-family: var(--font-body, Inter, system-ui, sans-serif); } .ds-field > span { font-size: .85rem; font-weight: 500; color: var(--muted, #9AA59F); } .ds-input { width: 100%; min-height: 46px; padding: 10px 14px; border-radius: 10px; border: 1px solid var(--line, #26322E); background: var(--surface-2, #1A2220); color: var(--text, #F4F7F2); font: inherit; } .ds-input:focus { outline: none; border-color: var(--lime, #C6F432); }"
+    },
+    {
+      "name": "Section Tabs",
+      "kind": "chip",
+      "refersTo": "tab-chip",
+      "description": "Pestañas de un evento (Resumen, Calendario, Clasificación…).",
+      "html": "<div class=\"ds-tabs\"><button class=\"ds-tab on\">Resumen</button><button class=\"ds-tab\">Calendario</button><button class=\"ds-tab\">Clasificación</button></div>",
+      "css": ".ds-tabs { display: flex; gap: 8px; font-family: var(--font-body, Inter, system-ui, sans-serif); } .ds-tab { padding: 8px 16px; border-radius: 999px; border: 1px solid var(--line, #26322E); background: transparent; color: var(--muted, #9AA59F); font: inherit; font-weight: 500; cursor: pointer; } .ds-tab:hover { color: var(--text, #F4F7F2); } .ds-tab:focus-visible { outline: 2px solid var(--lime, #C6F432); outline-offset: 2px; } .ds-tab.on { background: var(--text, #F4F7F2); color: var(--bg, #0A0E0D); border-color: var(--text, #F4F7F2); }"
+    },
+    {
+      "name": "Status Badge",
+      "kind": "chip",
+      "refersTo": "status-badge",
+      "description": "Estado del evento con punto de color.",
+      "html": "<span class=\"ds-badge active\">En juego</span> <span class=\"ds-badge pending\">Pendiente de pago</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: 999px; font-family: var(--font-body, Inter, system-ui, sans-serif); font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: var(--surface-2, #1A2220); color: var(--muted, #9AA59F); } .ds-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; } .ds-badge.active { color: var(--lime, #C6F432); background: rgba(198, 244, 50, .1); } .ds-badge.pending { color: var(--warn, #FFC857); background: rgba(255, 200, 87, .1); }"
+    },
+    {
+      "name": "Event Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Tarjeta enlace de un evento: metadatos, estado, nombre y resumen.",
+      "html": "<a class=\"ds-card\" href=\"#\"><div class=\"ds-card-top\"><span class=\"ds-label\">Liga · Fútbol 7</span><span class=\"ds-badge-mini\">En juego</span></div><h3>Liga de Invierno Vallecas</h3><p>Madrid · 8 equipos</p></a>",
+      "css": ".ds-card { display: grid; gap: 12px; padding: 16px; border-radius: 16px; background: var(--surface, #121816); border: 1px solid var(--line, #26322E); color: var(--text, #F4F7F2); text-decoration: none; font-family: var(--font-body, Inter, system-ui, sans-serif); transition: border-color .15s, transform .15s; } .ds-card:hover { border-color: var(--lime, #C6F432); transform: translateY(-1px); } .ds-card:focus-visible { outline: 2px solid var(--lime, #C6F432); outline-offset: 2px; } .ds-card-top { display: flex; justify-content: space-between; align-items: center; } .ds-label { font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--muted, #9AA59F); } .ds-badge-mini { font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--lime, #C6F432); background: rgba(198, 244, 50, .1); padding: 3px 10px; border-radius: 999px; } .ds-card h3 { margin: 0; font-family: var(--font-display, 'Space Grotesk', system-ui, sans-serif); font-size: 1.05rem; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; } .ds-card p { margin: 0; font-size: .85rem; color: var(--muted, #9AA59F); }"
+    },
+    {
+      "name": "Match Row",
+      "kind": "custom",
+      "description": "Fila de partido: local, marcador tabular, visitante.",
+      "html": "<div class=\"ds-match\"><span class=\"ds-home\">Leones de Lavapiés</span><span class=\"ds-score\">3–1</span><span>Chamberí United</span></div>",
+      "css": ".ds-match { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 12px; padding: 12px 0; color: var(--text, #F4F7F2); font-family: var(--font-body, Inter, system-ui, sans-serif); } .ds-home { text-align: right; } .ds-score { min-width: 64px; text-align: center; font-family: var(--font-display, 'Space Grotesk', system-ui, sans-serif); font-weight: 700; font-size: 1.25rem; font-variant-numeric: tabular-nums; }"
+    },
+    {
+      "name": "Bottom Tab Bar",
+      "kind": "nav",
+      "description": "Navegación principal en el móvil; el activo en lima.",
+      "html": "<nav class=\"ds-tabbar\"><a class=\"on\" href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z\"/><circle cx=\"12\" cy=\"10\" r=\"2.5\"/></svg>Descubrir</a><a href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"17\" rx=\"3\"/><path d=\"M3 10h18M8 2v4M16 2v4\"/></svg>Organizar</a><a href=\"#\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M4 21c0-4 3.6-6 8-6s8 2 8 6\"/></svg>Cuenta</a></nav>",
+      "css": ".ds-tabbar { display: flex; height: 64px; background: rgba(18, 24, 22, .96); border-top: 1px solid var(--line, #26322E); font-family: var(--font-body, Inter, system-ui, sans-serif); } .ds-tabbar a { flex: 1; display: grid; place-items: center; align-content: center; gap: 2px; font-size: .72rem; font-weight: 500; color: var(--muted, #9AA59F); text-decoration: none; } .ds-tabbar a svg { width: 22px; height: 22px; } .ds-tabbar a:hover { color: var(--text, #F4F7F2); } .ds-tabbar a:focus-visible { outline: 2px solid var(--lime, #C6F432); outline-offset: -4px; } .ds-tabbar a.on { color: var(--lime, #C6F432); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "El marcador nocturno",
+    "overview": "Sportryn se ve como un partido amateur de noche bajo los focos: el campo está a oscuras y lo único que brilla es el marcador. El fondo es un negro verdoso casi absoluto, las superficies se separan por tonos y líneas de cal finas, no por sombras, y el lima de los focos se reserva para lo que de verdad importa en ese momento: el resultado, la acción que hay que tocar, quién va primero.\n\nLa app es una herramienta que se usa de pie, con una mano y con prisa: el árbitro cerrando el acta, el capitán mirando la clasificación después del partido. Por eso la densidad es media, los controles son grandes y redondos y el texto es Inter sobrio; la personalidad la ponen los titulares y los números en Space Grotesk. Las piezas para compartir (stickers 1080×1920) son el mismo mundo con el volumen subido: ahí el lima llena el bloque del marcador y la tipografía se vuelve gigante.\n\nLa identidad es provisional (logo, paleta y tipografías pueden cambiar), pero mientras esté vigente es la única: no se mezcla con otra estética.",
+    "keyCharacteristics": [
+      "Oscuro por defecto (`color-scheme: dark`), sin modo claro.",
+      "Un solo acento, lima, con dos registros: escaso en la app, abundante en los stickers.",
+      "Profundidad por capas tonales y bordes de 1px, no por sombras.",
+      "Botones píldora de 46px pensados para el pulgar.",
+      "Números tabulares en Space Grotesk para marcadores y puntos.",
+      "El rombo lima (cuadrado girado 45°) como firma de marca."
+    ],
+    "rules": [
+      { "name": "The Floodlight Rule", "body": "En la app, el lima ocupa como mucho una acción principal por pantalla más los indicadores de estado activo. Si dos botones lima compiten, uno pasa a ghost.", "section": "colors" },
+      { "name": "The Share Volume Rule", "body": "En stickers y piezas para compartir el lima puede llenar superficies grandes (el bloque del marcador), siempre con Night Pitch encima. Esa licencia no vuelve a la app.", "section": "colors" },
+      { "name": "The Card Colours Rule", "body": "Rojo, amarillo y azul solo comunican estado. Nunca se usan como acento decorativo ni como color de marca.", "section": "colors" },
+      { "name": "The Tabular Score Rule", "body": "Todo número que se compara en columna (marcador, puntos, goles, tablas) lleva `font-variant-numeric: tabular-nums`, y los que son resultado van en Space Grotesk 700.", "section": "typography" },
+      { "name": "The Quiet Body Rule", "body": "Space Grotesk nunca se usa para párrafos ni etiquetas de formulario; Inter nunca se usa para titulares.", "section": "typography" },
+      { "name": "The Flat Pitch Rule", "body": "Las tarjetas no llevan sombra. Si algo necesita destacar, sube de capa tonal o cambia el color del borde; no se eleva.", "section": "elevation" }
+    ],
+    "dos": [
+      "**Do** reservar el lima a una acción principal por pantalla más los indicadores de estado activo (The Floodlight Rule).",
+      "**Do** separar superficies subiendo de capa tonal (Night Pitch → Stand Shadow → Dugout) con bordes de 1px Chalk Line.",
+      "**Do** mantener los controles táctiles en 46px de alto y en píldora; 36px solo en acciones secundarias dentro de tarjetas.",
+      "**Do** poner cifras tabulares en Space Grotesk 700 en todo marcador, punto y gol.",
+      "**Do** dejar que en los stickers el lima llene el bloque del marcador, con Night Pitch encima.",
+      "**Do** respetar las zonas seguras y el hueco de la barra inferior en cualquier pantalla nueva."
+    ],
+    "donts": [
+      "**Don't** usar sombras en tarjetas o paneles; la única sombra es la del toast.",
+      "**Don't** usar rojo, amarillo o azul como decoración: solo comunican estado.",
+      "**Don't** usar bordes laterales gruesos de color para destacar tarjetas o avisos; el aviso usa borde fino completo y tinte.",
+      "**Don't** colocar la etiqueta en mayúsculas espaciadas encima de un titular grande de portada; se usa para metadatos de tarjeta.",
+      "**Don't** añadir un modo claro ni una segunda paleta de acento mientras esta identidad esté vigente."
+    ]
+  }
+}

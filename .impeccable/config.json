@@ -1,0 +1,21 @@
+{
+  "buildPath": "comp",
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "space grotesk",
+        "createdAt": "2026-11-16T15:17:26.581Z",
+        "reason": "CLAUDE.md del proyecto fija Space Grotesk como fuente de titulares (identidad provisional)"
+      },
+      {
+        "rule": "overused-font",
+        "value": "inter",
+        "createdAt": "2026-11-16T15:17:26.727Z",
+        "reason": "CLAUDE.md del proyecto fija Inter como fuente de texto (identidad provisional)"
+      }
+    ]
+  }
+}

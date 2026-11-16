@@ -15,3 +15,5 @@ _to_delete/
 # Accesos directos de skills (se recrean con npx skills add)
 .claude/skills/
 .agents/
+.impeccable/hook.cache.json
+.impeccable/config.local.json

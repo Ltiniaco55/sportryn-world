@@ -58,7 +58,7 @@ textarea.input { min-height: 96px; resize: vertical; }
 .input:focus { outline: none; border-color: var(--lime); }
 .grid-2 { display: grid; gap: var(--s-3); grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
 .error-box { padding: var(--s-3) var(--s-4); border-radius: var(--r-sm); background: rgba(255, 107, 94, .1); border: 1px solid rgba(255, 107, 94, .35); color: #FFB4AC; font-size: .9rem; }
-.note { padding: var(--s-3) var(--s-4); border-radius: var(--r-sm); background: var(--surface-2); border-left: 3px solid var(--lime); font-size: .9rem; color: var(--muted); }
+.note { padding: var(--s-3) var(--s-4); border-radius: var(--r-sm); background: rgba(198, 244, 50, .06); border: 1px solid rgba(198, 244, 50, .22); font-size: .9rem; color: var(--muted); }
 
 .badge { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: var(--r-pill); font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; background: var(--surface-2); color: var(--muted); white-space: nowrap; }
 .badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }

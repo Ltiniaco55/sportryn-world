@@ -57,6 +57,11 @@ Factories para tests: `api/tests/helpers.ts` (`f.user()`, `f.event(org, 'active'
 - Diseña mobile-first: la app se usa sobre todo desde el móvil como PWA.
 - Textos traducibles con `useT.ts` (ES/EN).
 
+## Skills por carpeta
+
+- **App (`web/`)**: Impeccable (`/impeccable`, con `PRODUCT.md` y `DESIGN.md`), más `break-ui`, `mobile-native`, `gestures` y las de animación: `animate`, `animation-performance`, `animation-vocabulary`, `choreograph`, `find-animation-opportunities`, `improve-animations`, `remove-animations` y `review-animations`.
+- **Landing (`landing/`)**: `design-taste-frontend`.
+
 ## No tocar
 
 - `_to_delete/`: archivos sobrantes pendientes de borrar; ignóralos.
